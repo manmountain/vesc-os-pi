@@ -14,4 +14,8 @@ if ! grep -qE 'fbcon=' "${BINARIES_DIR}/rpi-firmware/cmdline.txt"; then
 sed -i ' 1 s/.*/& fbcon=map:2/' "${BINARIES_DIR}/rpi-firmware/cmdline.txt"
 fi
 
+if ! grep -qE 'plymouth.ignore-serial-consoles' "${BINARIES_DIR}/rpi-firmware/cmdline.txt"; then
+sed -i ' 1 s/.*/& plymouth.ignore-serial-consoles/' "${BINARIES_DIR}/rpi-firmware/cmdline.txt"
+fi
+
 exit $?
